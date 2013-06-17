@@ -308,3 +308,34 @@ def is_pangram( phrase ):
         return True
 
     return False
+
+
+# 21. Character frequency
+# Counts how many characters of the same letter are there in
+# a string
+# -> ( 'aabbccddddd' ) -> { 'a': 2, 'b': 2, 'c': 2, d: 5 }
+def char_freq( string ):
+
+    dict = {}
+
+    for a in string:
+        keys = dict.keys()
+
+        if a in keys:
+            dict[ a ] = dict[ a ] + 1
+
+        else:
+            dict[ a ] = 1
+
+    return dict
+
+
+# 23. Correct
+# Takes a string and sees that 1) two or more occurences of a space
+# are compressed into one. 2) Adds a space betweet a letter and a period
+# if they have not space.
+def correct( string ):
+    # This   is  very funny  and    cool.Indeed!
+    # This is very funny and cool. Indeed!
+
+

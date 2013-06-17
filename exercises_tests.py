@@ -190,6 +190,13 @@ class TestSequenceFunctions( unittest.TestCase ):
 
         self.assertTrue( is_pangram )
 
+    # 21. Character frequecy
+    def test_char_freq( self ):
+
+        string = 'aabbccdddeeeefffff'
+        char_freq = exercises.char_freq( string )
+
+        self.assertEqual( char_freq, { 'a': 2, 'c': 2, 'b': 2, 'e': 4, 'd': 3, 'f': 5 } )
 
 
 # Run
