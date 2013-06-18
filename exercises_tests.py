@@ -207,6 +207,10 @@ class TestSequenceFunctions( unittest.TestCase ):
 
         self.assertEqual( 'This is a. Bad formatted string. It is to be fixed.', corrected )
 
+    # 34. Copy file count
+    def test_copy_file_count( self ):
+
+        exercises.copy_file_count_lines()
 
 # Run
 if __name__ == '__main__':

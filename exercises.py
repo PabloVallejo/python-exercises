@@ -345,3 +345,19 @@ def correct( string ):
     string = re.sub( r'(?<=\.)(?=[a-zA-Z])', ' ', string )
 
     return string
+
+# 34. Write a program that given a text file will create
+# a new text file in which all the lines from the original file are numbered
+# from 1 to n.
+# http://docs.python.org/2/tutorial/inputoutput.html
+def copy_file_count_lines( filename = 'README.md' ):
+
+    f = open( 'README.md', 'r' )
+
+    # Read file line by line
+    for line in f:
+        print( line )
+
+    # Create new file
+    new_file = open( 'README.txt', 'r+' )
+    print( new_file )
