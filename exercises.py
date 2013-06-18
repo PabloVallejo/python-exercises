@@ -1,7 +1,7 @@
 
 # Exercises Module
 # Module for collecting the exercises
-
+import re
 
 # Max of two numbers
 def max( a, b ):
@@ -224,7 +224,6 @@ def rot_13_encrypt( string ):
 
 
 
-
 # ROT-13: Decrypts
 #
 # rot_13_decrypt( 'Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!' ) ->
@@ -334,8 +333,15 @@ def char_freq( string ):
 # Takes a string and sees that 1) two or more occurences of a space
 # are compressed into one. 2) Adds a space betweet a letter and a period
 # if they have not space.
+#
+# correct( 'This   is  very funny  and    cool.Indeed!' )
+#  -> This is very funny and cool. Indeed!
 def correct( string ):
-    # This   is  very funny  and    cool.Indeed!
-    # This is very funny and cool. Indeed!
 
+    # Replace multiple whitespaces with one only
+    string = re.sub( r'\s{2,}', ' ', string )
 
+    # Add space after dots followed inmediatelly by a word
+    string = re.sub( r'(?<=\.)(?=[a-zA-Z])', ' ', string )
+
+    return string

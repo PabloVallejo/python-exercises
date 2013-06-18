@@ -199,6 +199,15 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( char_freq, { 'a': 2, 'c': 2, 'b': 2, 'e': 4, 'd': 3, 'f': 5 } )
 
 
+    # 23. Correct
+    def test_correct( self ):
+
+        string = 'This is a.Bad  formatted string.It      is to be fixed.'
+        corrected = exercises.correct( string )
+
+        self.assertEqual( 'This is a. Bad formatted string. It is to be fixed.', corrected )
+
+
 # Run
 if __name__ == '__main__':
     unittest.main()
