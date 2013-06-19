@@ -351,7 +351,7 @@ def correct( string ):
 # a new text file in which all the lines from the original file are numbered
 # from 1 to n.
 # http://docs.python.org/2/tutorial/inputoutput.html
-def copy_file_count_lines( filename = 'README.md' ):
+def copy_file_count_lines( filename = 'data/text.txt' ):
 
     original = open( filename, 'r' )
 
@@ -361,4 +361,23 @@ def copy_file_count_lines( filename = 'README.md' ):
     # Read file line by line
     for line, content in enumerate( original ):
         new_file.write( '%s %s' % ( line + 1, content ) )
+
+
+# 38. Average_word_length
+# Calculates the average word length in a file
+# passed by the user.
+def average_word_length( filename = 'data/the-dream.md' ):
+
+    file = open( filename, 'r' )
+
+    # Count words
+    words = re.findall( '\w+', file.read() )
+
+    total_length = 0
+    for word in words:
+        total_length += len( word )
+
+    # Calculate average word length
+    average = total_length / len( words )
+    return average;
 
