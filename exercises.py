@@ -346,18 +346,19 @@ def correct( string ):
 
     return string
 
-# 34. Write a program that given a text file will create
+
+# 37. Write a program that given a text file will create
 # a new text file in which all the lines from the original file are numbered
 # from 1 to n.
 # http://docs.python.org/2/tutorial/inputoutput.html
 def copy_file_count_lines( filename = 'README.md' ):
 
-    f = open( 'README.md', 'r' )
-
-    # Read file line by line
-    for line in f:
-        print( line )
+    original = open( filename, 'r' )
 
     # Create new file
-    new_file = open( 'README.txt', 'r+' )
-    print( new_file )
+    new_file = open( 'data/output-37.md', 'w+' )
+
+    # Read file line by line
+    for line, content in enumerate( original ):
+        new_file.write( '%s %s' % ( line + 1, content ) )
+
