@@ -207,6 +207,15 @@ class TestSequenceFunctions( unittest.TestCase ):
 
         self.assertEqual( 'This is a. Bad formatted string. It is to be fixed.', corrected )
 
+    # 36. Hapax Legomenon
+    def test_hapax_legomenon( self ):
+
+        ideal = [ 'and', 'valleys', 'over', 'it', 'greenest', 'seraph', 'our', 'its', 'stood', 'stately', 'there', 'spread', 'monarch', 'angels', 'head', 'good',
+            'never', 'half', 'by', 'fabric', 'a', 'reared', 'of', 'radiant', 'tenanted', 'thought', 's', 'so', 'dominion', 'pinion', 'once' ]
+        hapax_legomenons = exercises.find_hapax_legomenons( 'data/usher.md' )
+
+        self.assertEqual( ideal, hapax_legomenons )
+
 
     # 37. Copy file count
     def test_copy_file_count( self ):
@@ -228,6 +237,8 @@ class TestSequenceFunctions( unittest.TestCase ):
         average = exercises.average_word_length( 'data/the-dream.md' )
 
         self.assertEqual( average, ideal_average )
+
+
 
 
 # Run

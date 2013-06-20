@@ -347,6 +347,34 @@ def correct( string ):
     return string
 
 
+# 36. Hapax legomenon
+# Finds words that happen to be used only once in a text.
+def find_hapax_legomenons( filename = 'data/the-dream.md' ):
+
+    dict, hapax_legomenons = {}, []
+
+    # Get words in the file
+    file = open( filename, 'r' )
+    words = re.findall( '\w+', file.read() )
+
+    for word in words:
+        keys = dict.keys()
+
+        word = word.lower()
+        if word in keys:
+            dict[ word ] += 1
+
+        else:
+            dict[ word ] = 1
+
+    for word in dict:
+        if dict[ word ] == 1:
+            hapax_legomenons.append( word )
+
+    return hapax_legomenons
+    # print( hapax_legomenons )
+
+
 # 37. Write a program that given a text file will create
 # a new text file in which all the lines from the original file are numbered
 # from 1 to n.
