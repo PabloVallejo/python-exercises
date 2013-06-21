@@ -1,9 +1,9 @@
 
 # Exercises Module
 # Module for collecting the exercises
-import re
+import re, pyttsx, time
 
-# Max of two numbers
+#1. Max of two numbers
 def max( a, b ):
 
     max = a
@@ -14,7 +14,7 @@ def max( a, b ):
     return b
 
 
-# Max of three numbers
+# 2. Max of three numbers
 def max_of_three( a, b, c ):
 
     max = a
@@ -28,7 +28,7 @@ def max_of_three( a, b, c ):
     return max
 
 
-# Calculates the length of a string
+# 3. Calculates the length of a string
 def str_len( string ):
 
     count = 0
@@ -37,7 +37,7 @@ def str_len( string ):
 
     return count
 
-# Returns whether the passed letter is a vowel
+# 4. Returns whether the passed letter is a vowel
 def is_vowel( letter ):
     vowels = 'aeiou'
 
@@ -46,7 +46,7 @@ def is_vowel( letter ):
 
     return False
 
-# Translates an English word into `Robbers language`
+# 5. Translates an English word into `Robbers language`
 # Sample:
 #   This is fun
 #   Tothohisos isos fofunon
@@ -67,7 +67,7 @@ def translate( string ):
     return translated
 
 
-# Sum: sum()
+# 6. Sum: sum()
 # Sums all the numbers in a list
 def sum( items ):
 
@@ -79,7 +79,7 @@ def sum( items ):
     return total
 
 
-# Multiply: multiply()
+# 6.1. Multiply: multiply()
 # Multiplies all the items in a list
 def multiply( items ):
 
@@ -91,7 +91,7 @@ def multiply( items ):
     return total
 
 
-# Reverse:
+# 7. Reverse:
 # Reverses a string
 # 'I am testing' -> 'gnitset ma I'
 def reverse( string ):
@@ -108,7 +108,7 @@ def reverse( string ):
     return truncated
 
 
-# Is palindrome
+# 8. Is palindrome
 # Checks whether a string is palindrome
 # 'radar' > reversed : 'radar'
 def is_palindrome( string ):
@@ -119,7 +119,7 @@ def is_palindrome( string ):
     return False
 
 
-# Is member
+# 9. Is member
 # Checks whether a value x is contained in a group of values
 # 1 -> [ 2, 1, 0 ] : True
 def is_member( x, group ):
@@ -131,7 +131,7 @@ def is_member( x, group ):
     return False
 
 
-# Overlapping
+# 10. Overlapping
 # Checks whether two lists have at least one number in common
 def overlaping( a, b ):
 
@@ -151,7 +151,7 @@ def overlaping( a, b ):
 
     # return False
 
-# Generate n chars
+# 11. Generate n chars
 # Generates `n` number of chars of the given one.
 # ( 5, 'x' ) -> 'xxxxx'
 def generate_n_chars( times, char ):
@@ -165,7 +165,7 @@ def generate_n_chars( times, char ):
     return output
 
 
-# Historigram
+# 12. Historigram
 # Takes a list of integers and prints a historigram of it
 # historigram( [ 1, 2, 3 ] ) ->
 #   *
@@ -178,65 +178,7 @@ def historigram( items ):
         print( chars )
 
 
-
-# ROT-13: Encrypt
-#
-# Encrypts a string in ROT-13
-# rot_13_encrypt( 'Caesar cipher? I much prefer Caesar salad!' ) ->
-#   Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!
-#
-def rot_13_encrypt( string ):
-
-    # Magnitud of rotation and dictionary
-    rotate_by, dictionary = 13, {}
-    abec = 'abcdefghijklmnopqrstuvwxyz'
-
-
-    i = 0
-    while i < len( abec ):
-
-        # dictionary[ 'a' ] = 'n'
-        index = i + rotate_by
-        if index > 25:
-            index = index - 26
-
-        dictionary[ abec[ i ] ] = abec[ index ]
-        i = i + 1
-
-
-    # Build phrase
-    # Pass any character that is not in abec
-    encrypted = ''
-    for char in string:
-
-        is_upper = char.istitle()
-        char = char.lower()
-
-        if not char in abec:
-            encrypted = encrypted + char
-
-        else:
-            char = dictionary[ char ]
-            char = char if not is_upper else char.upper()
-            encrypted = encrypted + char
-
-    return encrypted;
-
-
-
-# ROT-13: Decrypts
-#
-# rot_13_decrypt( 'Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!' ) ->
-#   Caesar cipher? I much prefer Caesar salad!
-#
-# Since we're dealing with offset 13 it means that decrypting a string
-# can be accomplished with the encrypt function since the alphabet contains
-# 26 letters
-def rot_13_decrypt( string ):
-    return rot_13_encrypt( string )
-
-
-# Max in list
+# 13. Max in list
 # Gets the larges number in a list of numbers
 def max_in_list( list ):
 
@@ -248,7 +190,7 @@ def max_in_list( list ):
     return max
 
 
-# Map words to numbers
+# 14. Map words to numbers
 # Gets a list of words and returns a list of integers
 # representing the length of each word
 # [ 'one', 'two', 'three' ] -> [ 3, 3, 5 ]
@@ -261,7 +203,7 @@ def map_words( words ):
     return result
 
 
-# Find longest wors
+# 15. Find longest wors
 # Receives a list of words and returns the length
 # of the longest one
 # [ 'one', 'two', 'three', 'four' ] -> 5
@@ -329,6 +271,63 @@ def char_freq( string ):
     return dict
 
 
+# 22. ROT-13: Encrypt
+#
+# Encrypts a string in ROT-13
+# rot_13_encrypt( 'Caesar cipher? I much prefer Caesar salad!' ) ->
+#   Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!
+#
+def rot_13_encrypt( string ):
+
+    # Magnitud of rotation and dictionary
+    rotate_by, dictionary = 13, {}
+    abec = 'abcdefghijklmnopqrstuvwxyz'
+
+
+    i = 0
+    while i < len( abec ):
+
+        # dictionary[ 'a' ] = 'n'
+        index = i + rotate_by
+        if index > 25:
+            index = index - 26
+
+        dictionary[ abec[ i ] ] = abec[ index ]
+        i = i + 1
+
+
+    # Build phrase
+    # Pass any character that is not in abec
+    encrypted = ''
+    for char in string:
+
+        is_upper = char.istitle()
+        char = char.lower()
+
+        if not char in abec:
+            encrypted = encrypted + char
+
+        else:
+            char = dictionary[ char ]
+            char = char if not is_upper else char.upper()
+            encrypted = encrypted + char
+
+    return encrypted;
+
+
+
+# 23.1 ROT-13: Decrypts
+#
+# rot_13_decrypt( 'Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!' ) ->
+#   Caesar cipher? I much prefer Caesar salad!
+#
+# Since we're dealing with offset 13 it means that decrypting a string
+# can be accomplished with the encrypt function since the alphabet contains
+# 26 letters
+def rot_13_decrypt( string ):
+    return rot_13_encrypt( string )
+
+
 # 23. Correct
 # Takes a string and sees that 1) two or more occurences of a space
 # are compressed into one. 2) Adds a space betweet a letter and a period
@@ -345,6 +344,68 @@ def correct( string ):
     string = re.sub( r'(?<=\.)(?=[a-zA-Z])', ' ', string )
 
     return string
+
+# 32. Find palidromes
+# Scans a file line by line findind palidromes in it
+# and return an array with the palindrome lines.
+def find_palidromes( filename = 'data/palidromes-32.md' ):
+    return ''
+
+
+# 33. Semordnilap
+def find_semordnilaps( filename = 'data/words-33.md' ):
+
+    semordnilaps = []
+    file = open( filename, 'r' )
+    words = re.findall( '\w+', file.read() )
+
+
+    for word in words:
+
+        for w in words:
+            if word[ ::-1 ].lower() == w.lower():
+                semordnilaps.append( w )
+
+
+    return semordnilaps
+
+
+
+# 35. Speak ICAO
+#
+# Given a string, this function will translate it to ICAO
+# giving a speach of each letter's corresponding tranlation according ICAO dictionary.
+# The pause betweet each spoken translated letter and each word can be set.
+#
+#  ( 'Hello', 0, 1 ) -> Will speach -> 'hotel' `wait 0 seconds`,  'echo' `wait 0 seconds`, 'lima' `wait 0 seconds`,
+#      'lima' `wait 0 seconds`, 'oscar' `wait 0 seconds` `and then wait 1 second`
+#
+# Note: In order for this function to work you should have available `pyttsx` package
+# instructions and download can be found in the following link
+# https://github.com/parente/pyttsx
+#
+def speak_ICAO( string, letter_pause, word_pause ):
+
+    words = re.findall( '\w+', string )
+    engine = pyttsx.init()
+    engine.setProperty( 'rate', 130 )
+
+    # ICAO dictionary
+    d = {'a':'alfa', 'b':'bravo', 'c':'charlie', 'd':'delta', 'e':'echo', 'f':'foxtrot',
+     'g':'golf', 'h':'hotel', 'i':'india', 'j':'juliett', 'k':'kilo', 'l':'lima',
+     'm':'mike', 'n':'november', 'o':'oscar', 'p':'papa', 'q':'quebec', 'r':'romeo',
+     's':'sierra', 't':'tango', 'u':'uniform', 'v':'victor', 'w':'whiskey',
+     'x':'x-ray', 'y':'yankee', 'z':'zulu' }
+
+    for word in words:
+
+        for letter in word:
+            engine.say( d[ letter.lower() ] )
+            engine.runAndWait()
+            time.sleep( letter_pause )
+
+        time.sleep( word_pause )
+
 
 
 # 36. Hapax legomenon

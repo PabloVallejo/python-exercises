@@ -207,6 +207,16 @@ class TestSequenceFunctions( unittest.TestCase ):
 
         self.assertEqual( 'This is a. Bad formatted string. It is to be fixed.', corrected )
 
+
+    # 33. Find semordnilaps
+    def test_find_semordnilaps( self ):
+
+        spec = [ 'palindromes', 'semordnilap', 'desserts', 'stressed' ]
+
+        semordnilaps = exercises.find_semordnilaps( 'data/words-33.md' )
+        self.assertEqual( semordnilaps, spec )
+
+
     # 36. Hapax Legomenon
     def test_hapax_legomenon( self ):
 
