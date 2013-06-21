@@ -182,6 +182,18 @@ class TestSequenceFunctions( unittest.TestCase ):
         result = exercises.filter_long_words( words, 3 )
         self.assertEqual( [ 'How', 'can', 'clam', 'cram', 'clean', 'cream', 'can?' ], result )
 
+
+    # 17. Is Palindrome advances
+    def test_is_palindrome_advances( self ):
+
+        # string = 'Was it a rat I saw?'
+        strings = [ 'Was it a rat I saw?', 'Step on no pets', 'Sit on a potato pan, Otis' ]
+
+        for string in strings:
+            is_palindrome = exercises.is_palindrome_advanced( string )
+            self.assertTrue( is_palindrome )
+
+
     # Is pangram
     def test_is_pangram( self ):
 
@@ -206,6 +218,11 @@ class TestSequenceFunctions( unittest.TestCase ):
         corrected = exercises.correct( string )
 
         self.assertEqual( 'This is a. Bad formatted string. It is to be fixed.', corrected )
+
+    # 32. Find palindromes
+    def test_find_palindeomes( self ):
+        # exercises.find_palidromes( 'data/palindromes-32.md' )
+        print( '' )
 
 
     # 33. Find semordnilaps

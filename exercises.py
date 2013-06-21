@@ -233,7 +233,21 @@ def filter_long_words( words, x ):
     return result
 
 
-# 17. Is pangram
+# 17. Version of palindrome that ignores punctuation, capitalization and
+# spaces, so that a larger range of palidromes can be accepted.
+# ( "Dammit, I'm mad!" ) -> is palindrome
+def is_palindrome_advanced( string ):
+
+    stripped = re.sub( r'[^a-zA-z]+', '', string )
+    reversed = reverse( stripped )
+
+    if stripped.lower() == reversed.lower():
+        return True
+
+    return False
+
+
+# 18. Is pangram
 # Checks whether a phrase is pangram, that is, if
 # it contains all the letters of the alphabet
 def is_pangram( phrase ):
@@ -345,11 +359,16 @@ def correct( string ):
 
     return string
 
+
 # 32. Find palidromes
 # Scans a file line by line findind palidromes in it
 # and return an array with the palindrome lines.
 def find_palidromes( filename = 'data/palidromes-32.md' ):
-    return ''
+
+    file = open( filename, 'r' )
+
+    for line, content in enumerate( file ):
+        print( content )
 
 
 # 33. Semordnilap
