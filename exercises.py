@@ -1,10 +1,10 @@
 
 # Exercises Module
 # Module for collecting the exercises
-import re, pyttsx, time
+import re, pyttsx, time, random
 
-#1. Max of two numbers
-def max( a, b ):
+# 1. Max of two numbers
+def max_num( a, b ):
 
     max = a
 
@@ -79,7 +79,7 @@ def sum( items ):
     return total
 
 
-# 6.1. Multiply: multiply()
+# 6.1. Multiply
 # Multiplies all the items in a list
 def multiply( items ):
 
@@ -209,7 +209,7 @@ def map_words( words ):
 # [ 'one', 'two', 'three', 'four' ] -> 5
 def longest_word( words ):
 
-    # Asume the first word as the longest one
+    # Asume the first word is the longest one
     longest = str_len( words[ 0 ] )
 
     for word in words:
@@ -329,8 +329,7 @@ def rot_13_encrypt( string ):
     return encrypted;
 
 
-
-# 23.1 ROT-13: Decrypts
+# 22.1 ROT-13: Decrypts
 #
 # rot_13_decrypt( 'Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!' ) ->
 #   Caesar cipher? I much prefer Caesar salad!
@@ -360,15 +359,141 @@ def correct( string ):
     return string
 
 
+# 24. Make third Form
+# Takes a singular verb and makes it third person
+#   ( 'run' ) -> 'runs'
+#   ( 'Brush' ) -> 'brushes'
+def make_3d_form( verb ):
+
+    add_es_suffix, third_form = [ 'o', 'ch', 's', 'sh', 'x', 'z' ], False
+
+    if verb.endswith( 'y' ):
+        third_form = verb[ 0:-1 ] + 'ies'
+
+    for suffix in add_es_suffix:
+        if verb.endswith( suffix ):
+            third_form = verb + 'es'
+
+    if not third_form:
+        third_form = verb + 's'
+
+    return third_form
+
+
+# 25. Make `ing` form
+# Given an infinite verb this function returns the
+# present participle of it.
+#   ( 'go' ) -> 'going'
+#   ( 'sleep' ) -> 'sleep'
+def make_ing_form( verb ):
+
+    pp = False
+
+    if verb.endswith( 'e' ):
+        pp = verb[ 0:-1 ] + 'ing'
+
+    if verb.endswith( 'ie' ):
+        pp = verb[ 0:-2 ] + 'ying'
+
+    # Consonant-vowel-consonant
+    if not is_vowel( verb[ -1 ] ):
+
+        if is_vowel( verb[ -2 ] ):
+            if not is_vowel( verb[ -3 ] ):
+                pp = verb + verb[ -1 ] + 'ing'
+
+    if not pp:
+        pp = verb + 'ing'
+
+    return pp
+
+
+
+#-----------------------------------------------
+# Higher order functions and list comprehension
+#--------------------------------------------------
+# According to Wikipedia, high-order-functions are functions that do at least one
+# of the following:
+#
+#   Take one or more functions as input
+#   Output a function
+#
+# In python, there are several examples of such functions, some of them are:
+#
+#   filter( function, iterable )
+#   map( function, iterable )
+#   reduce( function, iterable )
+#   max( iterable )
+#   sort(  )
+
+
+# 26. Largest Number
+# Given a list of numbers, this function returns the largest one
+# it does it using `reduce` function.
+def max_in_list_v1( numbers ):
+
+    def compare( x, y ):
+
+        if y > x:
+            return y
+
+        return x
+
+    largest = reduce( compare, numbers )
+    return largest
+
+
+# 27. Map strings
+# Maps a list of words into a list of integers representing each
+# word length.
+# It uses the `map` higher-order-function
+def map_words_v1( words ):
+    return map( len, words )
+
+
+# 27.1 Map strings
+# Does the same as #27 but uses `List comprehensions`
+# See http://www.secnetix.de/olli/Python/list_comprehensions.hawk
+def map_words_v2( words ):
+    return [ len( word ) for word in words ]
+
+
+# 28. Find longest word
+# Using high-order-function, this function receives a list of words,
+# and return the longest one.
+def find_longest_word_advanced( words ):
+
+    largest = max( words, key = len )
+    return len( largest )
+
+
+# 29. Filter Long Words
+# Takes a list of words and an integer and then return
+# an array with all the words that are longer in length that
+# the integer passed
+def filter_long_words_advanced( words, x ):
+
+    validate = lambda word: len( word ) >= x
+    filtered_words = filter( validate, words )
+
+    return filtered_words
+
+
+
+
 # 32. Find palidromes
 # Scans a file line by line findind palidromes in it
 # and return an array with the palindrome lines.
 def find_palidromes( filename = 'data/palidromes-32.md' ):
 
+    palindromes = []
     file = open( filename, 'r' )
 
     for line, content in enumerate( file ):
-        print( content )
+        if is_palindrome_advanced( content ):
+            palindromes.append( content )
+
+    return palindromes
 
 
 # 33. Semordnilap
@@ -452,7 +577,6 @@ def find_hapax_legomenons( filename = 'data/the-dream.md' ):
             hapax_legomenons.append( word )
 
     return hapax_legomenons
-    # print( hapax_legomenons )
 
 
 # 37. Write a program that given a text file will create
@@ -489,3 +613,107 @@ def average_word_length( filename = 'data/the-dream.md' ):
     average = total_length / len( words )
     return average;
 
+
+# 39. Guess the number game
+# Command line game that will randomly select a number from 1 to 20
+# and will ask the user to guess it.
+def guess_the_number_game():
+
+    number, guesses = random.randint( 1, 20 ), 1
+
+    user_name = raw_input( 'Hello! what is your name? \n' )
+    print 'Well, {}, I am thinking of a number betweet 1 and 20.'.format( user_name )
+    print 'Take a guess.'
+
+    guess = input()
+    while guess != number:
+
+        if guess < number:
+            print 'Your guess is too low.'
+            print 'Take a guess.'
+            guesses += 1
+            guess = input()
+
+        else:
+            print 'Your guess is to high.'
+            print 'Take a guess.'
+            guesses += 1
+            guess = input()
+
+    if guess == number:
+        print 'Good job {} you guessed my number in {} guesses!'.format( user_name, guesses )
+
+
+# 40. Anagram
+# Command line game that given a list of colours will pick one,
+# make an Anagram with it and ask the user to decript it.
+def anagram_game( words ):
+
+    w, anagram = words[ random.randint( 0, len( words ) - 1 ) ], ''
+    letters, guess = [], ''
+
+    for letter in w:
+        letters.append( letter )
+
+    length = len( letters )
+
+    for n in range( 0, length ):
+        i = random.randint( 0, len( letters ) )
+        anagram += letters[ i - 1 ]
+        letters.pop( i - 1 )
+
+
+    # Interactive game
+    print 'Colour word anagram: {}'.format( anagram )
+    guess = raw_input( 'Guess the colour word! \n' )
+    while guess.lower() != w.lower():
+        guess = raw_input( 'Guess the colour word! \n' )
+
+    print 'Correct'
+
+
+# 41. Lingo function
+# Given two words, this function will compare them and show
+# clues on the second one, that may lead to guess the first one.
+def lingo( word, guess ):
+
+    feedback, length = guess, len( word )
+
+    # Lambdas which given a word return it enclosed in brackets or parenthesis
+    add_par, add_bra = lambda s: '(' + s + ')', lambda s: '[' + s + ']'
+
+
+    for i, letter in enumerate( guess ):
+        if letter.lower() in word.lower():
+
+            if i < length:
+                clue = add_bra( letter ) if letter.lower() == word[ i ].lower() else add_par( letter )
+
+            else:
+                clue = add_par( letter )
+
+            feedback = re.sub( letter, clue, feedback )
+
+
+    return feedback
+
+
+# 41 Lingo Game
+# Lingo is a game for guessing a hidden 5 characters word.
+# Users enter a word and it is compared with the one to guess
+# and clues are show for the user to finally guess the word.
+def lingo_game():
+
+    words = [ 'tiger', 'house', 'cigar', 'opera', 'modem', 'horse', 'plane', 'white' ]
+    word = words[ random.randint( 0, len( words ) -1 ) ]
+
+    guess = raw_input( 'Enter your guess for the five characters long word. \n' )
+    while guess.lower() != word.lower():
+        print lingo( word, guess )
+        guess = raw_input( 'Oop. Try again \n' )
+
+    if guess.lower() == word.lower():
+        print 'You guessed the word.'
+
+
+# 43.
