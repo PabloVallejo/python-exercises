@@ -716,4 +716,28 @@ def lingo_game():
         print 'You guessed the word.'
 
 
-# 43.
+# 43. Anagram
+# Given a text file of words, this program will
+# find the most anagrams in it.
+def find_anagrams( filename = 'data/words-43.md' ):
+
+    archive, anagrams = open( filename ), []
+    words = re.findall( '\w+', archive.read() )
+
+    # words = [ 'seller', 'resell', 'sample', 'review', 'viewer', 'reserve', 'reverse' ]
+
+    for word in words:
+        for w in words:
+
+            if not word == w:
+                if len( word ) == len( w ):
+                    is_anagram = True
+                    for letter in word:
+                        if not letter in w:
+                            is_anagram = False
+
+                    if is_anagram:
+                        anagrams.append( word )
+
+
+    return anagrams

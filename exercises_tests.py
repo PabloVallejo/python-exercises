@@ -339,7 +339,6 @@ class TestSequenceFunctions( unittest.TestCase ):
     # def test_guess_the_number_game( self ):
     #     exercises.guess_the_number_game()
 
-
     # 40. Anagram
     # def test_anagram_game( self ):
 
@@ -354,6 +353,13 @@ class TestSequenceFunctions( unittest.TestCase ):
         result = exercises.lingo( word, guess )
 
         self.assertEqual( result, spec )
+
+
+    # 43. Anagram
+    def test_find_anagrams( self ):
+        result = exercises.find_anagrams( 'data/words-43.md' )
+        print result
+
 
 
 # Run
