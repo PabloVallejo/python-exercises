@@ -357,8 +357,14 @@ class TestSequenceFunctions( unittest.TestCase ):
 
     # 43. Anagram
     def test_find_anagrams( self ):
-        result = exercises.find_anagrams( 'data/words-43.md' )
-        print result
+        # result = exercises.find_anagrams( 'data/words-43.md' )
+        # print result
+        # anagrams = exercises.anagrams()
+        # print anagrams
+
+        # Stack
+        anagrams = exercises.find_anagrams()
+        # print anagrams
 
 
 
