@@ -366,6 +366,10 @@ class TestSequenceFunctions( unittest.TestCase ):
         anagrams = exercises.find_anagrams()
         # print anagrams
 
+    # 44. Analyze brackets
+    def test_analyze_brackets( self ):
+        brackets = exercises.analyze_brackets()
+        # print brackets
 
 
 # Run
