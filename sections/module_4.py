@@ -1,7 +1,6 @@
 from collections import defaultdict
 import random, re
 
-
 # 43 Helper: Load Words
 # Returns an array of all the words in a file
 def load_words( filename ):

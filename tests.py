@@ -402,6 +402,10 @@ class TestSequenceFunctions( unittest.TestCase ):
         # print brackets
 
 
+    # 44. Analyze brackets
+    # def test_analyze_brackets( self ):
+        # brackets = exercises.analyze_brackets()
+        # print brackets
 
 
 # Run
