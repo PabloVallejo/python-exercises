@@ -285,6 +285,28 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( spec, result )
 
 
+    # 30 Translate words
+    def test_translate_words( self ):
+        words = [ 'merry', 'christmas', 'and', 'happy', 'new', 'year' ]
+        spec = [ 'merry', 'jul', 'och', 'happy', 'nya', '\xc3\xa5r' ]
+
+        translated = exercises.translate_words( words )
+        self.assertEqual( translated, spec )
+
+
+    # 31. Map
+    def test__map( self ):
+        print ''
+
+    # 31.1 Filter
+    def test__filter( self ):
+        print ''
+
+    # 31.2 Reducce
+    def test__reduce( self ):
+        print ''
+
+
     # 32. Find palindromes
     def test_find_palindeomes( self ):
 
@@ -366,10 +388,20 @@ class TestSequenceFunctions( unittest.TestCase ):
         anagrams = exercises.find_anagrams()
         # print anagrams
 
-    # 44. Analyze brackets
-    def test_analyze_brackets( self ):
-        brackets = exercises.analyze_brackets()
+    # 44.0 Validate brackets
+    def test_validate_brackets( self ):
+
+        string = '[[ [][] ]]'
+        validate = exercises.validate_brackets( string )
+
+        self.assertTrue( validate )
+
+
+    # def test_analyze_brackets( self ):
+        # brackets = exercises.analyze_brackets()
         # print brackets
+
+
 
 
 # Run

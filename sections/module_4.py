@@ -1,31 +1,8 @@
 from collections import defaultdict
-import random
-
-# 43. Anagram
-# Given a text file of words, this program will
-# find the most anagrams in it.
-def find_anagrams( filename = 'data/words-43.md' ):
-    return ''
-    # archive, anagrams = open( filename ), []
-    # words = re.findall( '\w+', archive.read() )
-
-    # for word in words:
-    #     for w in words:
-
-    #         if not word == w:
-    #             if len( word ) == len( w ):
-    #                 is_anagram = True
-    #                 for letter in word:
-    #                     if not letter in w:
-    #                         is_anagram = False
-
-    #                 if is_anagram:
-    #                     anagrams.append( word )
-
-    # return anagrams
+import random, re
 
 
-# Helper: Load Words
+# 43 Helper: Load Words
 # Returns an array of all the words in a file
 def load_words( filename ):
     with open( filename ) as f:
@@ -33,7 +10,6 @@ def load_words( filename ):
 
 
 # 43. Find Anagram
-# Finds all the anagrams in a file and return a list
 # Finds all the anagrams in a text file and returns a list
 # with all the group of anagrams
 # Adapted from answer at
@@ -53,50 +29,50 @@ def find_anagrams( filename = 'data/words-43.md' ):
     return anagrams
 
 
-# 44. Checks backets
+# 44 Helper: Checks whether a set pairs of squared brackets
+# is sintactically correct. This means, whether every opening bracket ( '[' )
+# is closed.
+# Example:
+#    []        True
+#    [][]      True
+#    []][[]    False
+def validate_brackets( string ):
+
+    string = re.sub( '\s+', '', string )
+
+    # Keep looping while there are ocurrences of `[]`.
+    while len( re.findall( r'\[]', string ) ) > 0:
+        string = re.sub( r'\[]', '', string )
+
+    if len( string ) == 0:
+        return True
+
+    return False
+
+
+# 44 Analyze backets
 # This function generates a random string with `n` opening brackets ( '[' ) and `n`
 # closing brackets ( ']' ) in a random order. After that, it checks to see whether
 # the generated string is combrises for pairs of opening/closing brackets.
+# After that, it print the output to the console like in this example.
+# Example:
 #
-# Your task in this exercise is as follows:
-
-# Generate a string with N opening brackets ("[") and N closing brackets ("]"), in some arbitrary order.
-# Determine whether the generated string is balanced; that is, whether it consists entirely of pairs of opening/closing brackets (in that order), none of which mis-nest.
-# Examples:
-
 #    []        OK   ][        NOT OK
 #    [][]      OK   ][][      NOT OK
 #    [[][]]    OK   []][[]    NOT OK
-#    [[[][]]]
 #
-def analyze_brackets():
+def analyze_rand_brackets():
 
-    length, string = random.randint( 2, 10 ), ''
+    length, string, spaces = random.randint( 1, 5 ) * 2, '', ''
     brackets, openning, closing = '[]', 0, 0
 
     for i in range( 0, length ):
         rand_bracket = random.randint( 0, 1 )
         string += brackets[ rand_bracket ]
 
-    # Analyze combination
-    openning, closing = re.findall( '\[', string ), re.findall( '\]', string )
-    if not openning == closing:
-        return False
+    for space in range( 1, 12 - len( string ) ):
+        spaces += ' '
 
-    # Deep checks
-    # While have the same
-    while openning == closing and openning != 0:
-        string = re.sub( r'\[]', '', string )
-        if len( string ) > 1:
-            string = re.sub( r'\[]' )
+    feedback = 'OK' if validate_brackets( string ) else 'NOT OK'
+    print '{}{}{}'.format( string, spaces, feedback )
 
-
-
-    # [][] -> OK
-    # []][[] -> Bad
-    # [][][]
-    # []][ -> Bad
-
-    # print string
-    # print openning
-    # print closing

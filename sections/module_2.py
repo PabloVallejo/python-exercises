@@ -1,5 +1,5 @@
+# This Python file uses the following encoding: utf-8
 
-#
 # Higher order functions and list comprehension
 #
 # According to Wikipedia, high-order-functions are functions that do at least one
@@ -67,3 +67,57 @@ def filter_long_words_advanced( words, x ):
     filtered_words = filter( validate, words )
 
     return filtered_words
+
+
+# 30. Translates a list of words from English into Swedish.
+# There are a fixed amount of words available for translatation.
+# Uses `map()`
+# Sample:
+#
+#   [ 'happy', 'new', 'year' ] -> [ 'happy', 'nya', 'år' ]
+#
+def translate_words( words ):
+
+    d = { 'all': 'alla', 'and': 'och', 'best': 'bäst', 'birthday': 'födelsedag', 'cake': 'kaka', 'celebrate': 'fira', 'christmas': 'jul',
+        'come': 'komma', 'dreams': 'drömmar', 'for': 'för', 'good': 'bra', 'happy': 'happy', 'hope': 'hopp', 'inviting': 'inbjudande', 'is': 'är',
+        'merry': 'merry', 'new': 'nya',  'thanks': 'tack', 'the': 'den', 'to': 'till', 'true': 'sant', 'us': 'oss', 'we': 'vi',
+        'wishes': 'önskemål', 'year': 'år', 'your': 'din' }
+
+    to_swedish = lambda word: d[ word ]
+    translated = _map( to_swedish, words )
+
+    return translated
+
+
+# 31. Map
+# `map()` is a python build-in function which receive a function `f`
+# and a list as parameters, and calls the function `f` on every element
+# from the list.
+# The following function is implementation of the functionality
+# `map()` accomplishes.
+def _map( fn, iterable ):
+
+    result = []
+    for v in iterable:
+        result.append( fn( v ) )
+
+    return result
+
+
+# 31.1 Filter
+# As well as `map()`, `filter()` is a python built-in higer-order function,
+# which get passed a function `f` and a list, and applies `f` to each of the elementf
+# in the list, and return a list with only the elements that when passed to `f`
+# made `f` return true
+def _filter( fn, iterable ):
+
+    result = []
+
+    for v in iterable:
+        if fn( v ):
+            result.append( v )
+
+    return result
+
+# 31.2 Reduce
+#
