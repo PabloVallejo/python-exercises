@@ -295,15 +295,23 @@ class TestSequenceFunctions( unittest.TestCase ):
 
 
     # 31. Map
-    def test__map( self ):
-        print ''
+    def test_map_v1( self ):
+        items, spec = [ 'one', 'two', 'three' ], [ 3, 3, 5 ]
+        result = exercises.map_v1( len, items )
+
+        self.assertEqual( result, spec )
 
     # 31.1 Filter
-    def test__filter( self ):
-        print ''
+    def test_filter_v1( self ):
+        items, spec = [ 'one', 'two', 'three', 'four' ], [ 'three', 'four' ]
+        fn = lambda x: len( x ) > 3
+
+        result = exercises.filter_v1( fn , items )
+        self.assertEqual( result, spec )
+
 
     # 31.2 Reducce
-    def test__reduce( self ):
+    def test_reduce_v1( self ):
         print ''
 
 

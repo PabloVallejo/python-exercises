@@ -29,7 +29,7 @@ def max_in_list_v1( numbers ):
 
         return x
 
-    largest = reduce( compare, numbers )
+    largest = reduce_v1( compare, numbers )
     return largest
 
 
@@ -84,7 +84,7 @@ def translate_words( words ):
         'wishes': 'önskemål', 'year': 'år', 'your': 'din' }
 
     to_swedish = lambda word: d[ word ]
-    translated = _map( to_swedish, words )
+    translated = map_v1( to_swedish, words )
 
     return translated
 
@@ -95,7 +95,7 @@ def translate_words( words ):
 # from the list.
 # The following function is implementation of the functionality
 # `map()` accomplishes.
-def _map( fn, iterable ):
+def map_v1( fn, iterable ):
 
     result = []
     for v in iterable:
@@ -109,7 +109,7 @@ def _map( fn, iterable ):
 # which get passed a function `f` and a list, and applies `f` to each of the elementf
 # in the list, and return a list with only the elements that when passed to `f`
 # made `f` return true
-def _filter( fn, iterable ):
+def filter_v1( fn, iterable ):
 
     result = []
 
@@ -119,5 +119,26 @@ def _filter( fn, iterable ):
 
     return result
 
+
 # 31.2 Reduce
-#
+# Reduce is also a built-in higer-priority function in python.
+# It receives two parameters, the first, a function `f` which receives two
+# arguments: `a`, `b`, and the second an iterable `iterable` which can ba a list.
+# What `reduce()` does, is calling `f` passing it as parameters the first and the second
+# elements in the list, after this, reduce captures the return value of the function
+# and passes it to `f` as `a`, and as `b` passes the third element of the list,
+# `recude()` captures the return value and passes it to `f` as `a` and so on, until
+# there are no more eleents in the list.
+def reduce_v1( fn, iterable ):
+
+    result, l = '', iterable
+
+    result = fn( l[ 0 ], l[ 1 ] )
+    l.pop( 0 )
+    l.pop( 1 )
+
+    for x in l:
+        result = fn( result, x )
+
+    return result
+
