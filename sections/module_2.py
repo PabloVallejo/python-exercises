@@ -132,10 +132,10 @@ def filter_v1( fn, iterable ):
 def reduce_v1( fn, iterable ):
 
     result, l = '', iterable
-
     result = fn( l[ 0 ], l[ 1 ] )
+
     l.pop( 0 )
-    l.pop( 1 )
+    l.pop( 0 )
 
     for x in l:
         result = fn( result, x )

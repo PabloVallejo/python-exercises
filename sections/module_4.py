@@ -49,7 +49,7 @@ def validate_brackets( string ):
     return False
 
 
-# 44 Analyze backets
+# 44. Analyze backets
 # This function generates a random string with `n` opening brackets ( '[' ) and `n`
 # closing brackets ( ']' ) in a random order. After that, it checks to see whether
 # the generated string is combrises for pairs of opening/closing brackets.

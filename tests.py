@@ -312,7 +312,13 @@ class TestSequenceFunctions( unittest.TestCase ):
 
     # 31.2 Reducce
     def test_reduce_v1( self ):
-        print ''
+
+        numbers, spec = [ 1, 2, 3, 4, 5 ], 15
+        fn = lambda x, y: x + y
+
+        result = exercises.reduce_v1( fn, numbers )
+        self.assertEqual( result, spec )
+
 
 
     # 32. Find palindromes
