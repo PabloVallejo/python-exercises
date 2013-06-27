@@ -1,6 +1,44 @@
 from collections import defaultdict
 import random, re
 
+
+
+
+
+
+
+
+
+
+
+# 42. Sentence Splitter
+# Given a text file, this program write in another text file each sentence
+# in a new line.
+def split_sentences( filename = 'data/text-42.md' ):
+
+    file = open( filename )
+
+    # Find sentence # 1
+    # Sentences boundaries
+    #
+    #   '.', '?' or '!'
+    #
+    # Find first dot
+
+    # return file.read()
+    #
+    # 1. Find everything until a character
+    # \[^.]*\
+
+    # Get the position of the last occurrence  of a char in a string
+    #
+    # string = 'sample/string/here'
+    # string.rfind( '/' ) # -> 13
+    #
+    # Get letter after that
+    # Get position of first dot
+
+
 # 43 Helper: Load Words
 # Returns an array of all the words in a file
 def load_words( filename ):
@@ -74,4 +112,5 @@ def analyze_rand_brackets():
 
     feedback = 'OK' if validate_brackets( string ) else 'NOT OK'
     print '{}{}{}'.format( string, spaces, feedback )
+
 
