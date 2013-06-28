@@ -390,11 +390,16 @@ class TestSequenceFunctions( unittest.TestCase ):
 
         self.assertEqual( result, spec )
 
-    # 43. Split Sentences
-    def test_split_sentences( self ):
 
+    # 42.1 Practice on 42
+    def test_slip_sentence_v1( self ):
+        exercises.split_sentences_v1( 'data/text-42.md' )
+
+
+    # 42. Split Sentences
+    def test_split_sentences( self ):
         result = exercises.split_sentences( 'data/text-42.md' )
-        print result
+        # print result
 
 
     # 43. Anagram

@@ -5,12 +5,6 @@ import random, re
 
 
 
-
-
-
-
-
-
 # 42. Sentence Splitter
 # Given a text file, this program write in another text file each sentence
 # in a new line.
@@ -30,13 +24,49 @@ def split_sentences( filename = 'data/text-42.md' ):
     # 1. Find everything until a character
     # \[^.]*\
 
-    # Get the position of the last occurrence  of a char in a string
+
+    # Get the position of the last occurrence of a char in a string
     #
     # string = 'sample/string/here'
     # string.rfind( '/' ) # -> 13
     #
     # Get letter after that
     # Get position of first dot
+
+
+    # Sentence boundaries occur at one of "." (periods), "?" or "!", except that
+
+    # 1. Periods followed by whitespace followed by a lower case letter are not sentence boundaries.
+    # i.e. sample
+
+    # 2. Periods followed by a digit with no intervening whitespace are not sentence boundaries.
+    # 1.5
+
+    # 3. Periods followed by whitespace and then an upper case letter, but preceded by any of a short list of titles are not sentence boundaries. Sample titles include Mr., Mrs., Dr., and so on.
+    # Mr. John, Mrs. John, Dr. John ...
+
+    # 4. Periods internal to a sequence of letters with no adjacent whitespace are not sentence boundaries (for example, www.aptex.com, or e.g).
+    # www.sample.com, e.g ..
+
+    # 5. Periods followed by certain kinds of punctuation (notably comma and more periods) are probably not sentence boundaries.
+    # ...
+
+
+
+# 42.1 Practice: Create a line break on every occurence of '.', '?' or '!'
+def split_sentences_v1( filename = 'data/text-42.md' ):
+
+    file = open( filename )
+    text = file.read()
+
+    text = re.sub( '\.', '.\n', text )
+    text = re.sub( '!', '!\n', text )
+    text = re.sub( '\?', '?\n', text )
+
+    print text
+
+
+
 
 
 # 43 Helper: Load Words
