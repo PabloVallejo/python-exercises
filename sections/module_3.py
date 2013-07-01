@@ -1,9 +1,17 @@
-import re, time, pyttsx, random
-from module_1 import is_palindrome_advanced
+#
+# Module 3. Simple exercises including I/O ( Input/Output )
+#
+# Simple exercises to use I/O functins and the `re` module.
+# Documentation for input and output in python can be found in the following link.
+# http://docs.python.org/2/tutorial/inputoutput.html
+#
+import re, time, random
+from module_1 import is_palindrome_advanced, char_freq
 
-# 32. Find palidromes
+
+# 32. Find palidromes.
 # Scans a file line by line findind palidromes in it
-# and return an array with the palindrome lines.
+# and return an array with the palindromes found.
 def find_palidromes( filename = 'data/palidromes-32.md' ):
 
     palindromes = []
@@ -16,7 +24,15 @@ def find_palidromes( filename = 'data/palidromes-32.md' ):
     return palindromes
 
 
-# 33. Semordnilap
+# 33. Semordnilap.
+# A semordnilap is a word that when spelled backwards, produces other word.
+# E.G.
+#
+#   strssed -> desserts
+#
+# This function, gets all the words in a file and finds all the words
+# that when spelled backwards, are equal to other words in the file.
+#
 def find_semordnilaps( filename = 'data/words-33.md' ):
 
     semordnilaps = []
@@ -32,6 +48,23 @@ def find_semordnilaps( filename = 'data/words-33.md' ):
 
 
     return semordnilaps
+
+
+# 34. Character frequency table.
+# Prints a table showing how many characters of each
+# charachter there are in a text file
+def char_freq_table( filename = 'data/the-dream.md' ):
+
+    file = open( filename )
+    letters = re.findall( '[a-zA-Z]', file.read() )
+    letters = ''.join( letters )
+
+    result = char_freq( letters )
+
+    # Print table
+    print 'The character frequency of the file {} is as follows:'.format( filename )
+    for k in result:
+        print '{}: {}'.format( k, result[ k ] )
 
 
 
@@ -50,6 +83,7 @@ def find_semordnilaps( filename = 'data/words-33.md' ):
 #
 def speak_ICAO( string, letter_pause, word_pause ):
 
+    import pyttsx
     words = re.findall( '\w+', string )
     engine = pyttsx.init()
     engine.setProperty( 'rate', 130 )
@@ -99,10 +133,10 @@ def find_hapax_legomenons( filename = 'data/the-dream.md' ):
     return hapax_legomenons
 
 
-# 37. Write a program that given a text file will create
-# a new text file in which all the lines from the original file are numbered
+# 37. Add line numbers.
+# Given a text file, this function will create a new text file
+# in which all the lines from the original file are numbered
 # from 1 to n.
-# http://docs.python.org/2/tutorial/inputoutput.html
 def copy_file_count_lines( filename = 'data/text.txt' ):
 
     original = open( filename, 'r' )
@@ -115,8 +149,8 @@ def copy_file_count_lines( filename = 'data/text.txt' ):
         new_file.write( '%s %s' % ( line + 1, content ) )
 
 
-# 38. Average_word_length
-# Calculates the average word length in a file
+# 38. Average_word_length.
+# Calculates the average word length in a text file
 # passed by the user.
 def average_word_length( filename = 'data/the-dream.md' ):
 
@@ -131,10 +165,10 @@ def average_word_length( filename = 'data/the-dream.md' ):
 
     # Calculate average word length
     average = total_length / len( words )
-    return average;
+    return average
 
 
-# 39. Guess the number game
+# 39. Guess the number game.
 # Command line game that will randomly select a number from 1 to 20
 # and will ask the user to guess it.
 def guess_the_number_game():

@@ -1,78 +1,32 @@
+#
+# Section 4: Somehow harder exercises
+#
+# This section covers regular expressions, input and output, the use of higher-
+# order-functions and a little more advanced loops.
+#
 from collections import defaultdict
 import random, re
 
 
-
-
-
 # 42. Sentence Splitter
-# Given a text file, this program write in another text file each sentence
-# in a new line.
+# Given a text file, this program separates its sentences based
+# on a set of rules and then, returns the result.
 def split_sentences( filename = 'data/text-42.md' ):
-
-    file = open( filename )
-
-    # Find sentence # 1
-    # Sentences boundaries
-    #
-    #   '.', '?' or '!'
-    #
-    # Find first dot
-
-    # return file.read()
-    #
-    # 1. Find everything until a character
-    # \[^.]*\
-
-
-    # Get the position of the last occurrence of a char in a string
-    #
-    # string = 'sample/string/here'
-    # string.rfind( '/' ) # -> 13
-    #
-    # Get letter after that
-    # Get position of first dot
-
-
-    # Sentence boundaries occur at one of "." (periods), "?" or "!", except that
-
-    # 1. Periods followed by whitespace followed by a lower case letter are not sentence boundaries.
-    # i.e. sample
-    # Sol: Add new line in Dot followed by space Followed by Uppercase Letter
-    # re -> '\.\s[A-Z]'
-    # re ->
-
-    # 2. Periods followed by a digit with no intervening whitespace are not sentence boundaries.
-    # 1.5
-    # Find -> '\.\d+'
-
-    # 3. Periods followed by whitespace and then an upper case letter, but preceded by any of a short list of titles are not sentence boundaries. Sample titles include Mr., Mrs., Dr., and so on.
-    # Mr. John, Mrs. John, Dr. John ...
-    # Find -> '(Mr.|Mrs.|Dr.)\s[A-Z]'
-
-    # 4. Periods internal to a sequence of letters with no adjacent whitespace are not sentence boundaries (for example, www.aptex.com, or e.g).
-    # www.sample.com, e.g ..
-    #
-
-    # 5. Periods followed by certain kinds of punctuation (notably comma and more periods) are probably not sentence boundaries.
-    # ...
-
-
-
-# 42.1 Practice: Create a line break on every occurence of '.', '?' or '!'
-def split_sentences_v1( filename = 'data/text-42.md' ):
 
     file = open( filename )
     text = file.read()
 
-    text = re.sub( '\.', '.\n', text )
-    text = re.sub( '!', '!\n', text )
-    text = re.sub( '\?', '?\n', text )
+    # Find and add a newline after every occurrence of a dot not preceded by ( `Mrs.`, `Mr.` or `Dr.` )
+    # and do followed by a space and an uppercase letter.
+    text = re.sub( r'\.(?<!Mrs.)(?<!Mr.)(?<!Dr.)(\s[A-Z])', r'.\n\1', text )
 
-    print text
+    # Find and add a newline after every `?`
+    text = re.sub( r'\?', '?\n', text )
 
+    # Find and add a newline after every `!`
+    text = re.sub( r'\!', '!\n', text )
 
-
+    return text
 
 
 # 43 Helper: Load Words
@@ -109,6 +63,7 @@ def find_anagrams( filename = 'data/words-43.md' ):
 #    []        True
 #    [][]      True
 #    []][[]    False
+#
 def validate_brackets( string ):
 
     string = re.sub( '\s+', '', string )
@@ -150,3 +105,110 @@ def analyze_rand_brackets():
     print '{}{}{}'.format( string, spaces, feedback )
 
 
+# 45 Helper:
+# Checks whether the list has a word ending with
+# a specific letter and return its position,
+# returns false if there are no words that match
+# the criteria.
+def has_word_starting_with( letter, iterable ):
+
+    for i, w in enumerate( iterable ):
+        if w.startswith( letter ):
+            return i
+
+    return False
+
+
+# 45. This function will generate a sequence with the
+# highest possible list of pokemons in which the final letter
+# of the name of the preceding one is the first letter of the
+# following one
+# Example:
+#
+#   banette -> emboar -> relicant -> tirtuga -> audino ...
+#
+def words_domino( filename = 'data/pokemons-list.md' ):
+
+    file = open( filename )
+    words = re.findall( '\w+', file.read() )
+    words_set = words[:]
+    best_fit, series = [], []
+
+    # Loop through all the elements in the word list
+    # looking for series starting from each one
+    for w in words:
+        current_word = w
+        words_set = words[:]
+        i = has_word_starting_with( current_word[ -1 ], words_set )
+
+        # Do the lookut for words starting with the final letter of `current_word`
+        while i is not False:
+            series.append( current_word )
+            current_word = words_set[ i ]
+            words_set.pop( i )
+            i = has_word_starting_with( current_word[ -1 ], words_set )
+
+
+        # If the current series has more items than the actual `best_fit`,
+        # set `best_fit` to the current series
+        if len( series ) > len( best_fit ):
+            best_fit = series[:]
+
+        # Empty the series in order to lookup again
+        series = []
+
+    return best_fit
+
+
+# 46. Anternade
+# Given a word list, this function takes each word and tries to make two
+# smaller words  using all the letters of that word.
+# Example:
+#
+#   'board': makes 'bad' and 'or'
+#   'waists': makes: 'wit' and 'ass'
+#
+def alternade( filename = 'data/words-43.md' ):
+
+    file = open( filename )
+    words = re.findall( '\w+', file.read() )
+    alternades = {}
+
+    for w in words:
+        words_subset = words[:]
+        words_subset.remove( w )
+
+        # Skip the look if the current word has less than two characters
+        if len( w ) < 2: continue
+
+        first = has_word_starting_with( w[ 0 ], words_subset )
+        second = has_word_starting_with( w[ 1 ], words_subset )
+
+        word_set, fit = list( w ), True
+        fit = True
+
+        # Enter if both words found
+        if first is not False and second is not False:
+
+            if len( words_subset[ first ] ) < len( w ) and len( words_subset[ second ] ) < len( w ):
+
+                # First word
+                for l in words_subset[ first ]:
+                    if l in word_set:
+                        i = word_set.index( l )
+                        word_set.pop( i )
+
+                    else: fit = False
+
+                # Second word
+                for letter in words_subset[ second ]:
+                    if letter in word_set:
+                        k = word_set.index( letter )
+                        word_set.pop( k )
+
+                    else: fit = False
+
+                if len( word_set ) is 0:
+                    alternades[ w ] = [ words_subset[ first ], words_subset[ second ], ]
+
+    return alternades

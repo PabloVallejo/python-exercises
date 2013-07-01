@@ -1,12 +1,12 @@
 # This Python file uses the following encoding: utf-8
 
-# Higher order functions and list comprehension
+# Section 2. Higher order functions and list comprehension
 #
 # According to Wikipedia, high-order-functions are functions that do at least one
 # of the following:
 #
-#   Take one or more functions as input
-#   Output a function
+#   Take one or more functions as input.
+#   Output a function.
 #
 # In python, there are several examples of such functions, some of them are:
 #
@@ -14,11 +14,11 @@
 #   map( function, iterable )
 #   reduce( function, iterable )
 #   max( iterable )
-#   sort(  )
+#   sort( iterable )
 
 
-# 26. Largest Number
-# Given a list of numbers, this function returns the largest one
+# 26. Largest Number.
+# Given a list of numbers, this function returns the largest one,
 # it does it using `reduce` function.
 def max_in_list_v1( numbers ):
 
@@ -36,20 +36,20 @@ def max_in_list_v1( numbers ):
 # 27. Map strings
 # Maps a list of words into a list of integers representing each
 # word length.
-# It uses the `map` higher-order-function
+# It uses the `map()` higher-order-function.
 def map_words_v1( words ):
     return map( len, words )
 
 
-# 27.1 Map strings
-# Does the same as #27 but uses `List comprehensions`
+# 27.1 Map strings.
+# Does the same as #27 but uses `List comprehensions`.
 # See http://www.secnetix.de/olli/Python/list_comprehensions.hawk
 def map_words_v2( words ):
     return [ len( word ) for word in words ]
 
 
-# 28. Find longest word
-# Using high-order-function, this function receives a list of words,
+# 28. Find longest word.
+# Using high-order-functions, this function receives a list of words,
 # and return the longest one.
 def find_longest_word_advanced( words ):
 
@@ -57,10 +57,10 @@ def find_longest_word_advanced( words ):
     return len( largest )
 
 
-# 29. Filter Long Words
+# 29. Filter Long Words.
 # Takes a list of words and an integer and then return
 # an array with all the words that are longer in length that
-# the integer passed
+# the integer passed.
 def filter_long_words_advanced( words, x ):
 
     validate = lambda word: len( word ) >= x
@@ -71,10 +71,10 @@ def filter_long_words_advanced( words, x ):
 
 # 30. Translates a list of words from English into Swedish.
 # There are a fixed amount of words available for translatation.
-# Uses `map()`
+# Uses `map()`.
 # Sample:
 #
-#   [ 'happy', 'new', 'year' ] -> [ 'happy', 'nya', 'år' ]
+#   ( [ 'happy', 'new', 'year' ] ) -> [ 'happy', 'nya', 'år' ]
 #
 def translate_words( words ):
 
@@ -89,11 +89,11 @@ def translate_words( words ):
     return translated
 
 
-# 31. Map
+# 31. Map.
 # `map()` is a python build-in function which receive a function `f`
 # and a list as parameters, and calls the function `f` on every element
 # from the list.
-# The following function is implementation of the functionality
+# The following function is an implementation of the functionality that
 # `map()` accomplishes.
 def map_v1( fn, iterable ):
 
@@ -104,11 +104,11 @@ def map_v1( fn, iterable ):
     return result
 
 
-# 31.1 Filter
+# 31.1 Filter.
 # As well as `map()`, `filter()` is a python built-in higer-order function,
 # which get passed a function `f` and a list, and applies `f` to each of the elementf
 # in the list, and return a list with only the elements that when passed to `f`
-# made `f` return true
+# made `f` return true.
 def filter_v1( fn, iterable ):
 
     result = []
@@ -120,15 +120,21 @@ def filter_v1( fn, iterable ):
     return result
 
 
-# 31.2 Reduce
+# 31.2 Reduce.
 # Reduce is also a built-in higer-priority function in python.
 # It receives two parameters, the first, a function `f` which receives two
 # arguments: `a`, `b`, and the second an iterable `iterable` which can ba a list.
 # What `reduce()` does, is calling `f` passing it as parameters the first and the second
 # elements in the list, after this, reduce captures the return value of the function
 # and passes it to `f` as `a`, and as `b` passes the third element of the list,
-# `recude()` captures the return value and passes it to `f` as `a` and so on, until
-# there are no more eleents in the list.
+# `reduce()` captures the return value and passes it to `f` as `a` and so on, until
+# there are no more elements in the list.
+#
+#   nums = [ 1, 2, 3, 4, 5 ]
+#   sum = lambda x, y: x + y
+#   reduce_v1( sum, nums )
+#  -> 15
+#
 def reduce_v1( fn, iterable ):
 
     result, l = '', iterable

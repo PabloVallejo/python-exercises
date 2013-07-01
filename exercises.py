@@ -23,6 +23,12 @@
 # may serve as reference for people getting started with python, as well as developers
 # that want to take a look at different design solutions.
 
+# MIT Licenced.
+# (c) 2013, Pablo Vallejo - https://github.com/PabloVallejo
+#
+# The repository for this project is available at.
+# https://github.com/PabloVallejo/python-exericeses
+
 
 # Import all fours sections of the exercises
 from sections.module_1 import *

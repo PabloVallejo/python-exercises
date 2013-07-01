@@ -1,5 +1,25 @@
 
-# Unit test for exercises
+# Unit tests for exercises
+#
+# Note: Commented test are the ones that produce output or require user
+# input from the command line. This tests have been commented in order not to
+# pause the test suite.
+#
+# In order to run the functions contained in these tests, you can uncomment the tests
+# or open the command line in the `sections` folder
+# and import the module in which the specific function is in
+# and then run the function from there.
+# E.G.
+#
+#   $ cd ~/python-exercises/sections
+#   $ python
+#
+#   Python 2.7 (r27:82525, Jul ......
+#   >>> import module_1
+#   >>> module_1.historygram( [ 1, 2, 3 ] )
+#   *
+#   **
+#   ***
 #
 
 import random
@@ -67,7 +87,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         translate = exercises.translate( original )
         self.assertEqual( translate, translated )
 
-    # 6. Sum: sum()
+    # 6. sum()
     def test_sum( self ):
         items = [ 1, 2, 3, 4, 5 ]
         total = exercises.sum( items )
@@ -75,28 +95,28 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( total, 15 )
 
 
-    # 6.1 Multiply
+    # 6.1 multiply()
     def test_multiply( self ):
         items = [ 1, 2, 3, 4, 5 ]
         total = exercises.multiply( items )
 
         self.assertEqual( total, 120 )
 
-    # 7. Reverse
+    # 7. reverse()
     def test_reverse( self ):
         string = 'I am testing'
         truncated = exercises.reverse( string )
 
         self.assertEqual( truncated, 'gnitset ma I' )
 
-    # 8. Is palidrome
+    # 8. is_palidrome()
     def test_is_palindrome( self ):
         string = 'radar'
 
         is_palindrome = exercises.is_palindrome( 'radar' )
         self.assertTrue( is_palindrome )
 
-    # 9. Is member
+    # 9. is_member()
     def test_is_member( self ):
         val = 's'
         group = [ 'sample', 's', 1 ]
@@ -105,33 +125,36 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertTrue( is_member )
 
 
-    # 10. Overlaping
-    def test_overlaping( self ):
+    # 10. overlapping()
+    def test_overlapping( self ):
+
         a, b, c = [ 1, 2, 3, 4 ], [ 7, 6, 5, 4 ], [ 9, 8 ]
 
-        overlaping = exercises.overlaping( a, b )
-        self.assertTrue( overlaping )
+        overlapping = exercises.overlapping( a, b )
+        self.assertTrue( overlapping )
 
-        overlaping = exercises.overlaping( a, c )
-        self.assertFalse( overlaping )
+        overlapping = exercises.overlapping( a, c )
+        self.assertFalse( overlapping )
 
 
-    #11. Generate n chars
+    #11. generate_n_char()
     def test_generate_n_chars( self ):
+
         char, times = 'x', 5
 
         new_string = exercises.generate_n_chars( times, char )
         self.assertEqual( new_string, 'xxxxx' )
 
 
-    # 12. Historygram
+    # 12. historygram()
+    # As this function generates output
+    # it will not be tested.
     # def test_historygram( self ):
-
         # description = [ 1, 2, 3, 4, 5 ]
         # exercises.historigram( description )
 
 
-    # 13. Max in list
+    # 13. max_in_list()
     def test_max_in_list( self ):
 
         list = [ 1, 2, 3, 4, 44, 6, 10, 7 ]
@@ -140,7 +163,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( max, 44 )
 
 
-    # 14. Map word list to length list
+    # 14. map_words()
     def test_map_words( self ):
 
         words = [ 'one', 'two', 'three', 'four' ]
@@ -149,7 +172,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( result, [ 3, 3, 5, 4 ] )
 
 
-    # 15. Longest word
+    # 15. longest_word()
     def test_longest_word( self ):
 
         words = [ 'Sheena', 'leads', 'Shelia', 'needs' ]
@@ -158,7 +181,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( longest, 6 )
 
 
-    # 16. Filter words
+    # 16. filter_words()
     def test_filter_words( self ):
 
         words = [ 'How', 'can', 'a', 'clam', 'cram', 'in', 'a', 'clean', 'cream', 'can?' ]
@@ -167,8 +190,8 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( [ 'How', 'can', 'clam', 'cram', 'clean', 'cream', 'can?' ], result )
 
 
-    # 17. Is Palindrome advances
-    def test_is_palindrome_advances( self ):
+    # 17. is_palindrome_advanced()
+    def test_is_palindrome_advanced( self ):
 
         # string = 'Was it a rat I saw?'
         strings = [ 'Was it a rat I saw?', 'Step on no pets', 'Sit on a potato pan, Otis' ]
@@ -178,7 +201,7 @@ class TestSequenceFunctions( unittest.TestCase ):
             self.assertTrue( is_palindrome )
 
 
-    # 18. Is pangram
+    # 18. is_panagram()
     def test_is_pangram( self ):
 
         phrase = 'The quick brown fox jumps over the lazy dog'
@@ -187,16 +210,24 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertTrue( is_pangram )
 
 
-    # 21. Character frequecy
+    # 19. 99 Bottles of Beer
+    # As this function produces output,it is
+    # not tested
+    # def test_99_bottles_of_beer( self ):
+        # exercises.sing_99_bottles_of_beer()
+
+
+    # 21. char_freq()
     def test_char_freq( self ):
 
         string = 'aabbccdddeeeefffff'
-        char_freq = exercises.char_freq( string )
 
+        char_freq = exercises.char_freq( string )
         self.assertEqual( char_freq, { 'a': 2, 'c': 2, 'b': 2, 'e': 4, 'd': 3, 'f': 5 } )
 
 
-    # 22. ROT-13 encrypt
+
+    # 22. rot_13_encrypt()
     def test_rot_13_encrypt( self ):
         string = 'Caesar cipher? I much prefer Caesar salad!'
         intended = 'Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!'
@@ -205,7 +236,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( encrypted, intended )
 
 
-    # 22.1 ROT-13 decrypt
+    # 22.1 rot_13_decrypt()
     def test_rot_13_decrypt( self ):
         intended = 'Caesar cipher? I much prefer Caesar salad!'
         string = 'Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!'
@@ -214,7 +245,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( decrypted, intended )
 
 
-    # 23. Correct
+    # 23. correct()
     def test_correct( self ):
 
         string = 'This is a.Bad  formatted string.It      is to be fixed.'
@@ -222,7 +253,7 @@ class TestSequenceFunctions( unittest.TestCase ):
 
         self.assertEqual( 'This is a. Bad formatted string. It is to be fixed.', corrected )
 
-    # 24. Make third form
+    # 24. make_3d_form()
     def test_make_3d_form( self ):
 
         words = [ 'brush', 'run', 'fix', 'carry' ]
@@ -234,7 +265,8 @@ class TestSequenceFunctions( unittest.TestCase ):
 
         self.assertEqual( spec, results )
 
-    # 25. Make `ing` form
+
+    # 25. make_ing_form()
     def test_make_ing_form( self ):
 
         words = [ 'sleep', 'write', 'die', 'eat', 'begin' ]
@@ -246,7 +278,8 @@ class TestSequenceFunctions( unittest.TestCase ):
 
         self.assertEqual( results, spec )
 
-    # 26. Largest number
+
+    # 26. max_in_list_v1()
     def test_max_in_list_v1( self ):
 
         numbers, spec = [ 5, 19, 10, 2, 7 ], 19
@@ -255,7 +288,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( result, spec )
 
 
-    # 27. Map words
+    # 27. map_words_v1()
     def test_map_words_v1( self ):
 
         words, spec = [ 'Gorilla', 'Monkey', 'Tiger', 'Giraffe' ], [ 7, 6, 5, 7 ]
@@ -265,8 +298,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( v2, spec )
 
 
-
-    # 28. Find longest word advanced
+    # 28. find_longest_word_advanced()
     def test_find_longest_word_advanced( self ):
 
         words = [ 'house', 'happiness', 'skateboarding', 'landscape'  ]
@@ -275,7 +307,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( longest, spec )
 
 
-    # 29. Find Long words advanced
+    # 29. filter_long_words_advanced()
     def test_find_long_words_advanced( self ):
 
         words = [ 'one', 'two', 'three', 'four', 'five', 'eighty' ]
@@ -285,7 +317,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( spec, result )
 
 
-    # 30 Translate words
+    # 30 translate_words()
     def test_translate_words( self ):
         words = [ 'merry', 'christmas', 'and', 'happy', 'new', 'year' ]
         spec = [ 'merry', 'jul', 'och', 'happy', 'nya', '\xc3\xa5r' ]
@@ -294,14 +326,15 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( translated, spec )
 
 
-    # 31. Map
+    # 31. map_v1()
     def test_map_v1( self ):
         items, spec = [ 'one', 'two', 'three' ], [ 3, 3, 5 ]
         result = exercises.map_v1( len, items )
 
         self.assertEqual( result, spec )
 
-    # 31.1 Filter
+
+    # 31.1 filter_v1()
     def test_filter_v1( self ):
         items, spec = [ 'one', 'two', 'three', 'four' ], [ 'three', 'four' ]
         fn = lambda x: len( x ) > 3
@@ -310,7 +343,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( result, spec )
 
 
-    # 31.2 Reducce
+    # 31.2 reduce_v1()
     def test_reduce_v1( self ):
 
         numbers, spec = [ 1, 2, 3, 4, 5 ], 15
@@ -320,8 +353,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( result, spec )
 
 
-
-    # 32. Find palindromes
+    # 32. find_palidromes()
     def test_find_palindeomes( self ):
 
         spec = [ 'Satan, oscillate my metallic sonatas\n', 'Was it a rat I saw?\n', 'Rise to vote sir\n' ]
@@ -330,7 +362,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( spec, palindromes )
 
 
-    # 33. Find semordnilaps
+    # 33. find_semordnilaps()
     def test_find_semordnilaps( self ):
 
         spec = [ 'palindromes', 'semordnilap', 'desserts', 'stressed' ]
@@ -339,7 +371,20 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( semordnilaps, spec )
 
 
-    # 36. Hapax Legomenon
+    # 34. test_char_freq_table()
+    # # This function also produces output
+    # so it will not be tested.
+    # def test_char_freq_table( self ):
+        # exercises.char_freq_table()
+
+    # 35. speak_ICAO
+    # As this function produces sound
+    # it will not be tested.
+    # def test_speak_ICAO( self ):
+        # string = 'Hello world.'
+        # exercises.speak_ICAO( string, 0, 1 )
+
+    # 36. find_hapax_legomenons()
     def test_hapax_legomenon( self ):
 
         ideal = [ 'and', 'valleys', 'over', 'it', 'greenest', 'seraph', 'our', 'its', 'stood', 'stately', 'there', 'spread', 'monarch', 'angels', 'head', 'good',
@@ -349,7 +394,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( ideal, hapax_legomenons )
 
 
-    # 37. Copy file count
+    # 37. copy_file_count_lines()
     def test_copy_file_count( self ):
 
         ideal = "1 O! nothing earthly save the ray\n2 (Thrown back from flowers) of Beauty's eye,"
@@ -362,7 +407,7 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( result.read(), ideal )
 
 
-    # 38. Average word length
+    # 38. average_word_length()
     def test_average_word_length( self ):
 
         ideal_average = 3
@@ -372,17 +417,21 @@ class TestSequenceFunctions( unittest.TestCase ):
 
 
     # 39. Guess the number game
+    # Since this function is an interactive
+    # command line game it will not be tested.
     # def test_guess_the_number_game( self ):
     #     exercises.guess_the_number_game()
 
     # 40. Anagram
+    # Since this function is an interactive
+    # command line game it will not be tested.
     # def test_anagram_game( self ):
 
     #     words = [ 'White', 'Blue', 'Red', 'Violet', 'Turquoise', 'Black', 'Yellow' ]
     #     exercises.anagram_game( words )
 
 
-    # 41, Lingo
+    # 41, lingo()
     def test_lingo( self ):
 
         word, guess, spec = 'Tiger', 'Finger', 'F[i]n(g)(e)(r)'
@@ -391,29 +440,21 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertEqual( result, spec )
 
 
-    # 42.1 Practice on 42
-    def test_slip_sentence_v1( self ):
-        exercises.split_sentences_v1( 'data/text-42.md' )
-
-
     # 42. Split Sentences
-    def test_split_sentences( self ):
-        result = exercises.split_sentences( 'data/text-42.md' )
+    # This function also generates output, so it will
+    # not be tested.
+    # def test_split_sentences( self ):
+        # result = exercises.split_sentences( 'data/text-42.md' )
         # print result
 
 
-    # 43. Anagram
+    # 43. find_anagrams()
     def test_find_anagrams( self ):
-        # result = exercises.find_anagrams( 'data/words-43.md' )
-        # print result
-        # anagrams = exercises.anagrams()
-        # print anagrams
+        anagrams = exercises.find_anagrams( 'data/words-43.md' )
+        self.assertTrue( isinstance( anagrams, list ) )
 
-        # Stack
-        anagrams = exercises.find_anagrams()
-        # print anagrams
 
-    # 44.0 Validate brackets
+    # 44.0 validate_brackets()
     def test_validate_brackets( self ):
 
         string = '[[ [][] ]]'
@@ -422,15 +463,26 @@ class TestSequenceFunctions( unittest.TestCase ):
         self.assertTrue( validate )
 
 
-    # def test_analyze_brackets( self ):
-        # brackets = exercises.analyze_brackets()
-        # print brackets
-
-
     # 44. Analyze brackets
+    # This function is an interactive command line procedure
+    # so it will not be tested.
     # def test_analyze_brackets( self ):
-        # brackets = exercises.analyze_brackets()
-        # print brackets
+        # exercises.analyze_brackets()
+
+
+    # 45. words_domino()
+    def test_words_domino( self ):
+
+        spec = [ 'baltoy', 'yamask', 'kangaskhan', 'nosepass', 'sableye', 'emboar', 'registeel', 'landorus', 'scolipede', 'emolga' ]
+        result = exercises.words_domino( 'data/pokemons-list.md' )
+
+        self.assertEqual( spec, result )
+
+
+    # 46. alternade()
+    # As alternade produces output, it will not be tested.
+    # def test_alternade( self ):
+        # exercises.alternade()
 
 
 # Run

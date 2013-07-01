@@ -1,9 +1,12 @@
-
 # Section 1. Very simple exercises
+#
+# This selection of exercises is intended for developers
+# to get a basic understanding of logical operators and loops in Python
+#
 
 import re
 
-# 1. Max of two numbers
+# 1. Max of two numbers.
 def max_num( a, b ):
 
     max = a
@@ -14,7 +17,7 @@ def max_num( a, b ):
     return b
 
 
-# 2. Max of three numbers
+# 2. Max of three numbers.
 def max_of_three( a, b, c ):
 
     max = a
@@ -28,7 +31,7 @@ def max_of_three( a, b, c ):
     return max
 
 
-# 3. Calculates the length of a string
+# 3. Calculates the length of a string.
 def str_len( string ):
 
     count = 0
@@ -37,7 +40,8 @@ def str_len( string ):
 
     return count
 
-# 4. Returns whether the passed letter is a vowel
+
+# 4. Returns whether the passed letter is a vowel.
 def is_vowel( letter ):
     vowels = 'aeiou'
 
@@ -46,10 +50,13 @@ def is_vowel( letter ):
 
     return False
 
-# 5. Translates an English word into `Robbers language`
+
+# 5. Translates an English frase into `Robbers language`.
 # Sample:
+#
 #   This is fun
 #   Tothohisos isos fofunon
+#
 def translate( string ):
 
     consonants = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ'
@@ -68,7 +75,7 @@ def translate( string ):
 
 
 # 6. Sum: sum()
-# Sums all the numbers in a list
+# Sums all the numbers in a list.
 def sum( items ):
 
     total = 0
@@ -80,7 +87,7 @@ def sum( items ):
 
 
 # 6.1. Multiply
-# Multiplies all the items in a list
+# Multiplies all the items in a list.
 def multiply( items ):
 
     total = items[ 0 ]
@@ -92,7 +99,7 @@ def multiply( items ):
 
 
 # 7. Reverse:
-# Reverses a string
+# Reverses a string.
 # 'I am testing' -> 'gnitset ma I'
 def reverse( string ):
 
@@ -102,14 +109,14 @@ def reverse( string ):
     # Loop over the string inversively
     while index > 0:
 
-        truncated = truncated + string[ index - 1 ]
+        truncated += string[ index - 1 ]
         index = index - 1
 
     return truncated
 
 
 # 8. Is palindrome
-# Checks whether a string is palindrome
+# Checks whether a string is palindrome.
 # 'radar' > reversed : 'radar'
 def is_palindrome( string ):
 
@@ -120,8 +127,8 @@ def is_palindrome( string ):
 
 
 # 9. Is member
-# Checks whether a value x is contained in a group of values
-# 1 -> [ 2, 1, 0 ] : True
+# Checks whether a value x is contained in a group of values.
+#   1 -> [ 2, 1, 0 ] : True
 def is_member( x, group ):
 
     for value in group:
@@ -133,7 +140,7 @@ def is_member( x, group ):
 
 # 10. Overlapping
 # Checks whether two lists have at least one number in common
-def overlaping( a, b ):
+def overlapping( a, b ):
 
     # Using `is_member()` method
     for x in a:
@@ -151,9 +158,13 @@ def overlaping( a, b ):
 
     # return False
 
+
 # 11. Generate n chars
-# Generates `n` number of chars of the given one.
-# ( 5, 'x' ) -> 'xxxxx'
+# Generates `n` number of characters of the given one.
+#
+#   generate_n_chars( 5, 'n' )
+#   -> nnnnn
+#
 def generate_n_chars( times, char ):
 
     output = ''
@@ -166,11 +177,12 @@ def generate_n_chars( times, char ):
 
 
 # 12. Historigram
-# Takes a list of integers and prints a historigram of it
-# historigram( [ 1, 2, 3 ] ) ->
-#   *
-#   **
-#   ***
+# Takes a list of integers and prints a historigram of it.
+#   historigram( [ 1, 2, 3 ] ) ->
+#       *
+#       **
+#       ***
+#
 def historigram( items ):
 
     for x in items:
@@ -179,10 +191,11 @@ def historigram( items ):
 
 
 # 13. Max in list
-# Gets the larges number in a list of numbers
+# Gets the larges number in a list of numbers.
 def max_in_list( list ):
 
     max = list[ 0 ]
+
     for x in list:
         if x > max:
             max = x
@@ -192,8 +205,10 @@ def max_in_list( list ):
 
 # 14. Map words to numbers
 # Gets a list of words and returns a list of integers
-# representing the length of each word
-# [ 'one', 'two', 'three' ] -> [ 3, 3, 5 ]
+# representing the length of each word.
+#
+#   [ 'one', 'two', 'three' ] -> [ 3, 3, 5 ]
+#
 def map_words( words ):
     result = []
 
@@ -205,8 +220,10 @@ def map_words( words ):
 
 # 15. Find longest wors
 # Receives a list of words and returns the length
-# of the longest one
-# [ 'one', 'two', 'three', 'four' ] -> 5
+# of the longest one.
+#
+#   [ 'one', 'two', 'three', 'four' ] -> 5
+#
 def longest_word( words ):
 
     # Asume the first word is the longest one
@@ -219,9 +236,9 @@ def longest_word( words ):
     return longest
 
 
-# 16. Filter long words
-# Receives a list of words and an integer n and returns
-# a list of the words that are longer than n
+# 16. Filter long words.
+# Receives a list of words and an integer `n` and returns
+# a list of the words that are longer than n.
 def filter_long_words( words, x ):
 
     result = []
@@ -234,8 +251,10 @@ def filter_long_words( words, x ):
 
 
 # 17. Version of palindrome that ignores punctuation, capitalization and
-# spaces, so that a larger range of palidromes can be accepted.
-# ( "Dammit, I'm mad!" ) -> is palindrome
+# spaces, so that a larger range of frases can be clasified as palindromes.
+#
+#   ( "Dammit, I'm mad!" ) -> is palindrome
+#
 def is_palindrome_advanced( string ):
 
     stripped = re.sub( r'[^a-zA-z]+', '', string )
@@ -247,9 +266,9 @@ def is_palindrome_advanced( string ):
     return False
 
 
-# 18. Is pangram
+# 18. Is pangram.
 # Checks whether a phrase is pangram, that is, if
-# it contains all the letters of the alphabet
+# it contains all the letters of the alphabet.
 def is_pangram( phrase ):
 
     abec = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ]
@@ -265,10 +284,37 @@ def is_pangram( phrase ):
     return False
 
 
-# 21. Character frequency
-# Counts how many characters of the same letter are there in
-# a string
-# -> ( 'aabbccddddd' ) -> { 'a': 2, 'b': 2, 'c': 2, d: 5 }
+# 19. 99 Bottles of beer.
+# 99 Bottles of beer is a traditional song in the United States and Canada.
+# It has a very repetitive lyrics and it is popular to sing it in very long trips.
+# The lyrics of the song are as follows.
+#
+#   99 bottles of beer in the wall, 99 bottles of beer.
+#   Take one down, pass it arrown, 98 bottles of beer.
+#
+# The song is repeated having one less bottle each time until there are no more
+# bottles to count.
+#
+def sing_99_bottles_of_beer():
+
+    for i in reversed( range( 1, 100 ) ):
+
+        print '{} bottle{} of beer in the wall, {} bottle{} of beer.'.format(
+                i, 's' if i != 1 else '', i, 's' if i != 1 else '' )
+
+        print 'Take one down, pass it around, {} bottle{} of beer on the wall.'.format(
+            i - 1, 's' if i - 1 != 1 else '' )
+
+
+# 20. Note: exercise number 20 is the same as exercise # 30
+
+
+# 21. Character frequency.
+# Counts how many characters of the same letter there are in
+# a string.
+#
+#   ( 'aabbccddddd' ) -> { 'a': 2, 'b': 2, 'c': 2, d: 5 }
+#
 def char_freq( string ):
 
     dict = {}
@@ -285,10 +331,10 @@ def char_freq( string ):
     return dict
 
 
-# 22. ROT-13: Encrypt
+# 22. ROT-13: Encrypt.
+# Encrypts a string in ROT-13.
 #
-# Encrypts a string in ROT-13
-# rot_13_encrypt( 'Caesar cipher? I much prefer Caesar salad!' ) ->
+#   rot_13_encrypt( 'Caesar cipher? I much prefer Caesar salad!' ) ->
 #   Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!
 #
 def rot_13_encrypt( string ):
@@ -301,7 +347,6 @@ def rot_13_encrypt( string ):
     i = 0
     while i < len( abec ):
 
-        # dictionary[ 'a' ] = 'n'
         index = i + rotate_by
         if index > 25:
             index = index - 26
@@ -329,25 +374,26 @@ def rot_13_encrypt( string ):
     return encrypted;
 
 
-# 22.1 ROT-13: Decrypts
+# 22.1 ROT-13: Decrypt.
 #
-# rot_13_decrypt( 'Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!' ) ->
+#   rot_13_decrypt( 'Pnrfne pvcure? V zhpu cersre Pnrfne fnynq!' ) ->
 #   Caesar cipher? I much prefer Caesar salad!
 #
 # Since we're dealing with offset 13 it means that decrypting a string
-# can be accomplished with the encrypt function since the alphabet contains
-# 26 letters
+# can be accomplished with the encrypt function given that the alphabet contains
+# 26 letters.
 def rot_13_decrypt( string ):
     return rot_13_encrypt( string )
 
 
-# 23. Correct
+# 23. Correct.
 # Takes a string and sees that 1) two or more occurences of a space
 # are compressed into one. 2) Adds a space betweet a letter and a period
 # if they have not space.
 #
-# correct( 'This   is  very funny  and    cool.Indeed!' )
-#  -> This is very funny and cool. Indeed!
+#   correct( 'This   is  very funny  and    cool.Indeed!' )
+#   -> This is very funny and cool. Indeed!
+#
 def correct( string ):
 
     # Replace multiple whitespaces with one only
@@ -359,10 +405,12 @@ def correct( string ):
     return string
 
 
-# 24. Make third Form
-# Takes a singular verb and makes it third person
+# 24. Make third Form.
+# Takes a singular verb and makes it third person.
+#
 #   ( 'run' ) -> 'runs'
 #   ( 'Brush' ) -> 'brushes'
+#
 def make_3d_form( verb ):
 
     add_es_suffix, third_form = [ 'o', 'ch', 's', 'sh', 'x', 'z' ], False
@@ -380,11 +428,13 @@ def make_3d_form( verb ):
     return third_form
 
 
-# 25. Make `ing` form
+# 25. Make `ing` form.
 # Given an infinite verb this function returns the
 # present participle of it.
+#
 #   ( 'go' ) -> 'going'
 #   ( 'sleep' ) -> 'sleep'
+#
 def make_ing_form( verb ):
 
     pp = False
