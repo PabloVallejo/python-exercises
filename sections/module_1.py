@@ -74,7 +74,7 @@ def translate( string ):
     return translated
 
 
-# 6. Sum: sum()
+# 6. Sum.
 # Sums all the numbers in a list.
 def sum( items ):
 
@@ -86,7 +86,7 @@ def sum( items ):
     return total
 
 
-# 6.1. Multiply
+# 6.1. Multiply.
 # Multiplies all the items in a list.
 def multiply( items ):
 
@@ -98,7 +98,7 @@ def multiply( items ):
     return total
 
 
-# 7. Reverse:
+# 7. Reverse.
 # Reverses a string.
 # 'I am testing' -> 'gnitset ma I'
 def reverse( string ):
@@ -115,7 +115,7 @@ def reverse( string ):
     return truncated
 
 
-# 8. Is palindrome
+# 8. Is palindrome.
 # Checks whether a string is palindrome.
 # 'radar' > reversed : 'radar'
 def is_palindrome( string ):
@@ -126,7 +126,7 @@ def is_palindrome( string ):
     return False
 
 
-# 9. Is member
+# 9. Is member.
 # Checks whether a value x is contained in a group of values.
 #   1 -> [ 2, 1, 0 ] : True
 def is_member( x, group ):
@@ -138,7 +138,7 @@ def is_member( x, group ):
     return False
 
 
-# 10. Overlapping
+# 10. Overlapping.
 # Checks whether two lists have at least one number in common
 def overlapping( a, b ):
 
@@ -159,7 +159,7 @@ def overlapping( a, b ):
     # return False
 
 
-# 11. Generate n chars
+# 11. Generate n chars.
 # Generates `n` number of characters of the given one.
 #
 #   generate_n_chars( 5, 'n' )
@@ -176,7 +176,7 @@ def generate_n_chars( times, char ):
     return output
 
 
-# 12. Historigram
+# 12. Historigram.
 # Takes a list of integers and prints a historigram of it.
 #   historigram( [ 1, 2, 3 ] ) ->
 #       *
@@ -190,7 +190,7 @@ def historigram( items ):
         print( chars )
 
 
-# 13. Max in list
+# 13. Max in list.
 # Gets the larges number in a list of numbers.
 def max_in_list( list ):
 
@@ -203,7 +203,7 @@ def max_in_list( list ):
     return max
 
 
-# 14. Map words to numbers
+# 14. Map words to numbers.
 # Gets a list of words and returns a list of integers
 # representing the length of each word.
 #
@@ -218,7 +218,7 @@ def map_words( words ):
     return result
 
 
-# 15. Find longest wors
+# 15. Find longest wors.
 # Receives a list of words and returns the length
 # of the longest one.
 #
