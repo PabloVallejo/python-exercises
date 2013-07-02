@@ -30,7 +30,7 @@
 # https://github.com/PabloVallejo/python-exericeses
 
 
-# Import all fours sections of the exercises
+# Import all four sections of the exercises
 from sections.module_1 import *
 from sections.module_2 import *
 from sections.module_3 import *
