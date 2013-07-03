@@ -2,7 +2,7 @@ Simple Python exercises
 ================
 
 
-Set of solutions for [46 Simple python exercises](http://), a list of exercises to introduce people to the
+Set of solutions for [46 Simple python exercises](https://github.com/PabloVallejo/python-exercises/blob/master/exercises-list.md), a list of exercises to introduce people to the
 Python programming language.
 
 This list of exercises comprises logical operators, loops, input and output, regular expressions and
@@ -48,9 +48,9 @@ Ran 41 tests in 0.218s
 OK
 ```
 
+## Contributing
+Everyone is welcome to contribute.
+
 ## Reference
 The original collection of exercises was created by Torbjörn Lager (torbjorn.lager@ling.gu.se)
 and can be found [here](http://www.ling.gu.se/~lager/python_exercises.html).
-
-## Contributing
-Everyone is welcome to contribute.
