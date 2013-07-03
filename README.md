@@ -16,11 +16,12 @@ In order for better categorization, the exercises have been divided into 4 secti
 4. Somehow harder exercises
 
 ## Getting started
-To execute a function from the set, just clone the repository or download the .zip containing all the files, then change directory into `python-exercises/sections` open the python command line and import the module in
+To execute a function from the set, just clone the repository or download the .zip containing all the files, then change directory into `python-exercises/sections`, open the python command line and import the module in
 which the exercise you want to run is in and then call it.
 
 ```bash
-$ cd ~/python-exercises/sections
+$ git clone https://github.com/PabloVallejo/python-exercises.git
+$ cd python-exercises/sections
 $ python
 
 Python 2.7 (r27:82525, Jul ......
@@ -34,9 +35,9 @@ Python 2.7 (r27:82525, Jul ......
 
 ## Running tests
 
-There is also a test suite for the sets, the purpose of it is first, so that users can refactor
-things without breaking something, and second, is for having a basic reference of how to test
-functions and to use the basic unittests methods.
+There is also a test suite for this exercises, the purpose of it is first, so that users can refactor
+things without breaking something, and second, for having a basic reference on how to test
+functions and use the basic unittests methods.
 
 ```bash
 $ cd python-exercises
@@ -49,7 +50,8 @@ OK
 ```
 
 ## Contributing
-Everyone is welcome to contribute.
+Everyone is welcome to contribute. Feel free to submit a pull request, issue or suggestion you may find relevant.
+
 
 ## Reference
 The original collection of exercises was created by Torbjörn Lager (torbjorn.lager@ling.gu.se)
