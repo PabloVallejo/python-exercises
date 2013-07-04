@@ -1,6 +1,7 @@
 Simple Python exercises
 ================
 
+[![Build Status](https://travis-ci.org/PabloVallejo/python-exercises.png?branch=master)](https://travis-ci.org/PabloVallejo/python-exercises)
 
 Set of solutions for [46 Simple python exercises](https://github.com/PabloVallejo/python-exercises/blob/master/exercises-list.md), a list of exercises to introduce people to the
 Python programming language.
