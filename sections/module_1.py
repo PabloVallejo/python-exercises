@@ -25,7 +25,7 @@ def str_len( string ):
 
     count = 0
     for letter in string:
-        count = count + 1
+        count += 1
 
     return count
 
@@ -66,7 +66,7 @@ def sum( items ):
     total = 0
 
     for a in items:
-        total = total + a
+        total += a
 
     return total
 
@@ -78,7 +78,7 @@ def multiply( items ):
     total = items[ 0 ]
 
     for x in items:
-        total = total * x
+        total *= x
 
     return total
 
@@ -155,7 +155,7 @@ def generate_n_chars( times, char ):
     output = ''
 
     while( times > 0 ):
-        output = output + char
+        output += char
         times = times - 1
 
     return output
@@ -308,7 +308,7 @@ def char_freq( string ):
         keys = dict.keys()
 
         if a in keys:
-            dict[ a ] = dict[ a ] + 1
+            dict[ a ] += 1
 
         else:
             dict[ a ] = 1
@@ -337,7 +337,7 @@ def rot_13_encrypt( string ):
             index = index - 26
 
         dictionary[ abec[ i ] ] = abec[ index ]
-        i = i + 1
+        i += 1
 
 
     # Build phrase
