@@ -9,26 +9,15 @@ import re
 # 1. Max of two numbers.
 def max_num( a, b ):
 
-    max = a
-
-    if b > a:
-        max = b
+    if a > b:
+        return a
 
     return b
 
 
 # 2. Max of three numbers.
 def max_of_three( a, b, c ):
-
-    max = a
-
-    if b > max:
-        max = b
-
-    if c > max:
-        max = c
-
-    return max
+    return max_num( a, max_num( b, c ) )
 
 
 # 3. Calculates the length of a string.
@@ -44,11 +33,7 @@ def str_len( string ):
 # 4. Returns whether the passed letter is a vowel.
 def is_vowel( letter ):
     vowels = 'aeiou'
-
-    if letter in vowels:
-        return True
-
-    return False
+    return letter in vowels
 
 
 # 5. Translates an English frase into `Robbers language`.
