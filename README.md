@@ -14,7 +14,7 @@ In order for better categorization, the exercises have been divided into 4 secti
 1. Very Simple Exercises
 2. Higher Order Functions and List Comprehension
 3. Simple exercises including Input and Output
-4. Somehow harder exercises
+4. Somewhat harder exercises
 
 ## Getting started
 To execute a function from the set, just clone the repository or download the .zip containing all the files, then change directory into `python-exercises/sections`, open the python command line and import the module in
